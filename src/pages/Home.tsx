@@ -301,7 +301,7 @@ export default function Home() {
 
                   {/* Scroll Hint */}
                   <div className="text-center text-xs text-muted-foreground">
-                    Scorri per leggere altre recensioni 5 e 4 stelle verificate da Google
+                    Scorri per leggere altre recensioni
                   </div>
                 </div>
               </AnimatedSection>
