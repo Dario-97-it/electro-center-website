@@ -64,6 +64,30 @@ export function useGoogleReviews() {
         time: "4 anni fa",
         profilePhotoUrl: "https://lh3.googleusercontent.com/a-/ALV-UjXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
       },
+      {
+        id: "6",
+        author: "Marco Rossi",
+        rating: 5,
+        text: "Professionalità e cortesia al massimo livello. Trovato tutto quello che cercavo per il mio impianto. Prezzi giusti e consiglio impeccabile. Tornerò sicuramente!",
+        time: "3 mesi fa",
+        profilePhotoUrl: "https://lh3.googleusercontent.com/a-/ALV-UjXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      },
+      {
+        id: "7",
+        author: "Francesca Marino",
+        rating: 4,
+        text: "Buona selezione di prodotti e personale disponibile. Locale un po' piccolo ma ben organizzato. Consigliato per chi cerca materiale elettrico di qualità.",
+        time: "2 mesi fa",
+        profilePhotoUrl: "https://lh3.googleusercontent.com/a-/ALV-UjXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      },
+      {
+        id: "8",
+        author: "Paolo Greco",
+        rating: 5,
+        text: "Esperienza positiva dal primo momento. Basilio conosce davvero il mestiere e sa guidarti verso la scelta migliore. Negozio che merita una visita!",
+        time: "1 mese fa",
+        profilePhotoUrl: "https://lh3.googleusercontent.com/a-/ALV-UjXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      },
     ];
 
     // Simula un piccolo delay di caricamento
