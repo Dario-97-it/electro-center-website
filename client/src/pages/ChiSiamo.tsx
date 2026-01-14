@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnimatedSection from "@/components/AnimatedSection";
 import { CheckCircle, Heart, Zap } from "lucide-react";
 
 export default function ChiSiamo() {
@@ -28,13 +29,15 @@ export default function ChiSiamo() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="py-12 md:py-20 bg-gradient-to-b from-primary/10 to-background">
-          <div className="container mx-auto px-4 animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-              Chi Siamo
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl">
-              Scopri la storia di Electro Center e i valori che guidano il nostro lavoro quotidiano.
-            </p>
+          <div className="container mx-auto px-4">
+            <AnimatedSection animation="fade-in-up">
+              <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+                Chi Siamo
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-3xl">
+                Scopri la storia di Electro Center e i valori che guidano il nostro lavoro quotidiano.
+              </p>
+            </AnimatedSection>
           </div>
         </section>
 
@@ -43,16 +46,16 @@ export default function ChiSiamo() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* Image */}
-              <div className="order-2 md:order-1 animate-slide-in-left">
+              <AnimatedSection animation="slide-in-left" className="order-2 md:order-1">
                 <img
                   src="/images/team-expertise.jpg"
                   alt="Team Electro Center"
                   className="rounded-xl shadow-lg w-full h-auto hover:shadow-2xl transition-shadow duration-500"
                 />
-              </div>
+              </AnimatedSection>
 
               {/* Text */}
-              <div className="order-1 md:order-2 animate-slide-in-right">
+              <AnimatedSection animation="slide-in-right" className="order-1 md:order-2">
                 <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
                   La Nostra Storia
                 </h2>
@@ -67,7 +70,7 @@ export default function ChiSiamo() {
                     Ogni giorno lavoriamo per offrire non solo prodotti eccellenti, ma anche un servizio personalizzato che rispecchia i valori di trasparenza, cordialità e disponibilità che caratterizzano il nostro brand.
                   </p>
                 </div>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>
@@ -75,25 +78,24 @@ export default function ChiSiamo() {
         {/* Values Section */}
         <section className="py-16 md:py-24 bg-primary/5">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12 animate-fade-in-up">
+            <AnimatedSection animation="fade-in-up" className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                 I Nostri Valori
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Questi principi guidano ogni decisione e ogni interazione con i nostri clienti
               </p>
-            </div>
+            </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {values.map((value, index) => {
                 const Icon = value.icon;
                 return (
-                  <div
+                  <AnimatedSection
                     key={index}
-                    className="bg-white rounded-xl p-8 border border-border shadow-sm hover:shadow-md transition-all animate-fade-in-up"
-                    style={{
-                      animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-                    }}
+                    animation="fade-in-scale"
+                    delay={index * 0.15}
+                    className="bg-white rounded-xl p-8 border border-border shadow-sm hover:shadow-md transition-all"
                   >
                     <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
                       <Icon className="w-6 h-6 text-white" />
@@ -104,7 +106,7 @@ export default function ChiSiamo() {
                     <p className="text-muted-foreground">
                       {value.description}
                     </p>
-                  </div>
+                  </AnimatedSection>
                 );
               })}
             </div>
@@ -114,7 +116,7 @@ export default function ChiSiamo() {
         {/* Mission Section */}
         <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto bg-white rounded-xl p-8 md:p-12 border border-border shadow-md animate-fade-in-scale">
+            <AnimatedSection animation="fade-in-scale" className="max-w-3xl mx-auto bg-white rounded-xl p-8 md:p-12 border border-border shadow-md">
               <h2 className="text-3xl font-bold text-primary mb-6">
                 La Nostra Missione
               </h2>
@@ -130,39 +132,41 @@ export default function ChiSiamo() {
                   Titolare, Electro Center B.C.
                 </p>
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </section>
 
         {/* Contact Section */}
         <section className="py-16 md:py-20 bg-gradient-to-r from-primary to-primary/90">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-              Visita il Nostro Negozio
-            </h2>
-            <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-              Siamo a Catania, pronti ad accoglierti e aiutarti a trovare esattamente quello che ti serve.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-              <a
-                href="tel:095448928"
-                className="px-8 py-3 bg-secondary text-primary font-bold rounded-lg hover:shadow-lg transition-all"
-              >
-                Chiamaci: 095 448928
-              </a>
-              <a
-                href="https://www.google.com/maps/place/Electro+Center+B.C.+Di+Basilio+Crisiglione/@37.5189518,15.0895216,20.75z"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3 bg-white text-primary font-bold rounded-lg hover:shadow-lg transition-all"
-              >
-                Vedi su Google Maps
-              </a>
-            </div>
-            <p className="text-primary-foreground/80 text-sm">
-              Via Canfora, 113 • 95128 Catania CT<br />
-              Aperto fino alle 20:00
-            </p>
+          <div className="container mx-auto px-4">
+            <AnimatedSection animation="fade-in-up" className="text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+                Visita il Nostro Negozio
+              </h2>
+              <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+                Siamo a Catania, pronti ad accoglierti e aiutarti a trovare esattamente quello che ti serve.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+                <a
+                  href="tel:095448928"
+                  className="px-8 py-3 bg-secondary text-primary font-bold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  Chiamaci: 095 448928
+                </a>
+                <a
+                  href="https://www.google.com/maps/place/Electro+Center+B.C.+Di+Basilio+Crisiglione/@37.5189518,15.0895216,20.75z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-3 bg-white text-primary font-bold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  Vedi su Google Maps
+                </a>
+              </div>
+              <p className="text-primary-foreground/80 text-sm">
+                Via Canfora, 113 • 95128 Catania CT<br />
+                Aperto fino alle 20:00
+              </p>
+            </AnimatedSection>
           </div>
         </section>
       </main>

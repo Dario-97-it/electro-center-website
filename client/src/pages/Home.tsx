@@ -2,6 +2,7 @@ import { Star, Zap, Package, Users, Shield, ChevronLeft, ChevronRight } from "lu
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReviewCard from "@/components/ReviewCard";
+import AnimatedSection from "@/components/AnimatedSection";
 import { useState, useEffect } from "react";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 
@@ -120,25 +121,24 @@ export default function Home() {
         {/* Services Section */}
         <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12 animate-fade-in-up">
+            <AnimatedSection animation="fade-in-up" className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                 I Nostri Servizi
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Tutto ciò che serve per i tuoi progetti elettrici, con qualità e professionalità
               </p>
-            </div>
+            </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {services.map((service, index) => {
                 const Icon = service.icon;
                 return (
-                  <div
+                  <AnimatedSection
                     key={index}
+                    animation="fade-in-up"
+                    delay={index * 0.1}
                     className="card-lift bg-white rounded-xl overflow-hidden border border-border hover:border-secondary hover:shadow-lg transition-all duration-300"
-                    style={{
-                      animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-                    }}
                   >
                     {/* Service Image */}
                     <div className="h-40 overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10">
@@ -160,7 +160,7 @@ export default function Home() {
                         {service.description}
                       </p>
                     </div>
-                  </div>
+                  </AnimatedSection>
                 );
               })}
             </div>
@@ -171,7 +171,7 @@ export default function Home() {
         <section className="py-12 md:py-16 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div className="animate-fade-in-scale" style={{ animationDelay: "0s" }}>
+              <AnimatedSection animation="fade-in-scale" delay={0}>
                 <div className="text-4xl md:text-5xl font-bold text-secondary mb-2">
                   4.7
                 </div>
@@ -187,19 +187,19 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-sm opacity-90">Su 33 Recensioni</p>
-              </div>
-              <div className="animate-fade-in-scale" style={{ animationDelay: "0.1s" }}>
+              </AnimatedSection>
+              <AnimatedSection animation="fade-in-scale" delay={0.1}>
                 <div className="text-4xl md:text-5xl font-bold text-secondary mb-2">
                   20+
                 </div>
                 <p className="text-sm opacity-90">Anni di Esperienza</p>
-              </div>
-              <div className="animate-fade-in-scale" style={{ animationDelay: "0.2s" }}>
+              </AnimatedSection>
+              <AnimatedSection animation="fade-in-scale" delay={0.2}>
                 <div className="text-4xl md:text-5xl font-bold text-secondary mb-2">
                   1000+
                 </div>
                 <p className="text-sm opacity-90">Prodotti Disponibili</p>
-              </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>
@@ -207,14 +207,14 @@ export default function Home() {
         {/* Testimonials Section */}
         <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12 animate-fade-in-up">
+            <AnimatedSection animation="fade-in-up" className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                 Cosa Dicono i Nostri Clienti
               </h2>
               <p className="text-lg text-muted-foreground">
                 Leggi le recensioni verificate da Google Maps
               </p>
-            </div>
+            </AnimatedSection>
 
             {/* Testimonial Carousel */}
             {loading ? (
@@ -226,9 +226,9 @@ export default function Home() {
                 </div>
               </div>
             ) : reviews.length > 0 ? (
-              <div className="w-full">
+              <AnimatedSection animation="fade-in-up" className="w-full">
                 {/* Google Reviews Header */}
-                <div className="flex items-center justify-center gap-3 mb-8 animate-fade-in-up">
+                <div className="flex items-center justify-center gap-3 mb-8">
                   <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full border border-blue-200">
                     <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -242,9 +242,15 @@ export default function Home() {
                 </div>
 
                 {/* Reviews Grid - 4 per blocco */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 animate-fade-in-up">
-                  {getVisibleReviews().map((review) => (
-                    <ReviewCard key={review.id} review={review} isActive={true} />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  {getVisibleReviews().map((review, idx) => (
+                    <AnimatedSection
+                      key={review.id}
+                      animation="fade-in-scale"
+                      delay={idx * 0.1}
+                    >
+                      <ReviewCard review={review} isActive={true} />
+                    </AnimatedSection>
                   ))}
                 </div>
 
@@ -298,36 +304,38 @@ export default function Home() {
                     Scorri per leggere altre recensioni 5 e 4 stelle verificate da Google
                   </div>
                 </div>
-              </div>
+              </AnimatedSection>
             ) : null}
           </div>
         </section>
 
         {/* CTA Section */}
         <section className="py-16 md:py-20 bg-gradient-to-r from-primary to-primary/90">
-          <div className="container mx-auto px-4 text-center animate-fade-in-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-              Hai Bisogno di Aiuto?
-            </h2>
-            <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-              Il nostro team è pronto a consigliarti e trovare la soluzione perfetta per le tue esigenze.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a
-                href="tel:095448928"
-                className="px-8 py-3 bg-secondary text-primary font-bold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
-              >
-                Chiamaci: 095 448928
-              </a>
-              <a
-                href="https://wa.me/39095448928"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3 bg-white text-primary font-bold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
-              >
-                WhatsApp
-              </a>
-            </div>
+          <div className="container mx-auto px-4">
+            <AnimatedSection animation="fade-in-up" className="text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+                Hai Bisogno di Aiuto?
+              </h2>
+              <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+                Il nostro team è pronto a consigliarti e trovare la soluzione perfetta per le tue esigenze.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <a
+                  href="tel:095448928"
+                  className="px-8 py-3 bg-secondary text-primary font-bold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  Chiamaci: 095 448928
+                </a>
+                <a
+                  href="https://wa.me/39095448928"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-3 bg-white text-primary font-bold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </AnimatedSection>
           </div>
         </section>
       </main>
